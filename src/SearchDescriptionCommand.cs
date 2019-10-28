@@ -11,7 +11,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ErrorHelper
 {
-    internal sealed class SearchDescriptionCommand : CommandBase
+    public sealed class SearchDescriptionCommand : CommandBase
     {
         public const int CommandId = 4129;
 
@@ -35,6 +35,53 @@ namespace ErrorHelper
             Instance = new SearchDescriptionCommand(package, commandService);
         }
 
+        public static string StripPaths(string descriptionContainingPaths)
+        {
+            var result = descriptionContainingPaths ?? string.Empty;
+
+            if (result.Contains(":/"))
+            {
+                var pathStartPos = result.IndexOf(":/");
+
+                if (char.IsLetter(result[pathStartPos - 1])
+                 && !char.IsLetterOrDigit(result[pathStartPos - 2]))
+                {
+                    pathStartPos -= 1;
+
+                    var endPos = result.IndexOf(" ", pathStartPos);
+
+                    if (result[pathStartPos - 1] == '\'')
+                    {
+                        endPos = result.IndexOf("'", pathStartPos) + 1;
+                        pathStartPos -= 1;
+                    }
+
+                    var firstPart = result.Substring(0, pathStartPos);
+
+                    result = firstPart + result.Substring(endPos);
+                }
+            }
+
+            if (result.Contains("../"))
+            {
+                var pathStartPos = result.IndexOf("../");
+
+                var endPos = result.IndexOf(" ", pathStartPos);
+
+                if (result[pathStartPos - 1] == '\'')
+                {
+                    endPos = result.IndexOf("'", pathStartPos) + 1;
+                    pathStartPos -= 1;
+                }
+
+                var firstPart = result.Substring(0, pathStartPos);
+
+                result = firstPart + result.Substring(endPos);
+            }
+
+            return result;
+        }
+
 #pragma warning disable VSTHRD100 // Avoid async void methods
         private async void Execute(object sender, EventArgs e)
 #pragma warning restore VSTHRD100 // Avoid async void methods
@@ -52,7 +99,14 @@ namespace ErrorHelper
                     url = "https://www.google.com/search?q=";
                 }
 
-                var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(desc))
+                string query = desc;
+
+                if (ErrorHelperPackage.Instance?.Options?.StripPaths ?? false)
+                {
+                    query = StripPaths(desc);
+                }
+
+                var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(query))
                 {
                     UseShellExecute = true,
                     Verb = "open",

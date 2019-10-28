@@ -13,5 +13,10 @@ namespace ErrorHelper
         [DisplayName("Search Engine")]
         [Description("Where to do the search.")]
         public SearchEngine SearchEngine { get; set; }
+
+        [Category("Error Helper")]
+        [DisplayName("Strip Paths Before Search")]
+        [Description("Remove anything that looks like a file path from the value sent to the search engine.")]
+        public bool StripPaths { get; set; }
     }
 }

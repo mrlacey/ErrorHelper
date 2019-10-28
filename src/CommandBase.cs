@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ErrorHelper
 {
-    internal class CommandBase
+    public class CommandBase
     {
         public static readonly Guid CommandSet = new Guid("5fea58eb-df34-46e8-ab5d-4708b07cf330");
 
@@ -23,9 +23,8 @@ namespace ErrorHelper
         public async Task<string> GetDescriptionAsync()
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var tasks = await this.package.GetServiceAsync(typeof(SVsErrorList)) as IVsTaskList2;
 
-            if (tasks != null)
+            if (await this.package.GetServiceAsync(typeof(SVsErrorList)) is IVsTaskList2 tasks)
             {
                 tasks.EnumSelectedItems(out IVsEnumTaskItems itemsEnum);
 
@@ -33,9 +32,7 @@ namespace ErrorHelper
 
                 if (itemsEnum.Next(1, vsTaskItem, null) == 0)
                 {
-                    string description;
-
-                    vsTaskItem[0].get_Text(out description);
+                    vsTaskItem[0].get_Text(out string description);
 
                     if (!string.IsNullOrWhiteSpace(description))
                     {
