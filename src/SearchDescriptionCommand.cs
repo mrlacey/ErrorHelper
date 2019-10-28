@@ -45,7 +45,14 @@ namespace ErrorHelper
 
             if (!string.IsNullOrEmpty(desc))
             {
-                var ps = new ProcessStartInfo($"https://www.bing.com/search?q=" + WebUtility.UrlEncode(desc))
+                string url = "https://www.bing.com/search?q=";
+
+                if (ErrorHelperPackage.Instance?.Options?.SearchEngine == SearchEngine.Google)
+                {
+                    url = "https://www.google.com/search?q=";
+                }
+
+                var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(desc))
                 {
                     UseShellExecute = true,
                     Verb = "open",
