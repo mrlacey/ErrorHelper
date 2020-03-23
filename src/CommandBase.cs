@@ -4,8 +4,10 @@
 
 using System;
 using System.Threading.Tasks;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Task = System.Threading.Tasks.Task;
 
 namespace ErrorHelper
 {
@@ -42,6 +44,23 @@ namespace ErrorHelper
             }
 
             return string.Empty;
+        }
+
+        protected async Task ShowStatusBarMessageAsync(string message)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            try
+            {
+                if (await this.package.GetServiceAsync(typeof(EnvDTE.DTE)) is DTE dte)
+                {
+                    dte.StatusBar.Text = message;
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine(exc);
+            }
         }
     }
 }

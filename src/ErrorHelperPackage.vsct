@@ -17,12 +17,18 @@
           <ButtonText>Copy Description</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidErrorHelperPackageCmdSet" id="cmdidSearchDescriptionCommand" priority="0x0100" type="Button">
-        <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
-        <Strings>
-          <ButtonText>Search Description</ButtonText>
-        </Strings>
-      </Button>
+        <Button guid="guidErrorHelperPackageCmdSet" id="cmdidSearchDescriptionCommand" priority="0x0100" type="Button">
+            <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+            <Strings>
+                <ButtonText>Search Description</ButtonText>
+            </Strings>
+        </Button>
+        <Button guid="guidErrorHelperPackageCmdSet" id="cmdidOpenUrlCommand" priority="0x0300" type="Button">
+            <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+            <Strings>
+                <ButtonText>Open URL</ButtonText>
+            </Strings>
+        </Button>
     </Buttons>
   </Commands>
 
@@ -33,6 +39,7 @@
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="CopyDescriptionCommandId" value="0x0100" />
       <IDSymbol value="4129" name="cmdidSearchDescriptionCommand" />
+      <IDSymbol value="4130" name="cmdidOpenUrlCommand" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

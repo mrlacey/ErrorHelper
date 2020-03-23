@@ -49,11 +49,7 @@
   <ItemGroup>
     <Compile Include="CommandBase.cs" />
     <Compile Include="CopyDescriptionCommand.cs" />
-    <Compile Include="ErrorHelperPackage1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorHelperPackage.vsct</DependentUpon>
-    </Compile>
+    <Compile Include="OpenUrlCommand.cs" />
     <Compile Include="OptionPageGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -63,6 +59,7 @@
     <Compile Include="SearchEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="ErrorHelper.ruleset" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -89,9 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="ErrorHelperPackage.vsct">
-      <Generator>VsctGenerator</Generator>
       <ResourceName>Menus.ctmenu</ResourceName>
-      <LastGenOutput>ErrorHelperPackage1.cs</LastGenOutput>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>

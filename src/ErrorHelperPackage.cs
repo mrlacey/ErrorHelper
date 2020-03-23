@@ -15,7 +15,7 @@ namespace ErrorHelper
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(ErrorHelperPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [InstalledProductRegistration("#110", "#112", "1.1")] // Info on this package for Help/About
+    [InstalledProductRegistration("#110", "#112", "1.2")] // Info on this package for Help/About
     [ProvideOptionPage(typeof(OptionPageGrid), "Error Helper", "General", 0, 0, true)]
     [ProvideProfileAttribute(typeof(OptionPageGrid), "Error Helper", "General", 106, 107, isToolsOptionPage: true)]
     public sealed class ErrorHelperPackage : AsyncPackage
@@ -44,6 +44,7 @@ namespace ErrorHelper
 
             await CopyDescriptionCommand.InitializeAsync(this);
             await SearchDescriptionCommand.InitializeAsync(this);
+            await OpenUrlCommand.InitializeAsync(this);
         }
     }
 }
