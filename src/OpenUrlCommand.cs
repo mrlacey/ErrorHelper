@@ -39,9 +39,19 @@ namespace ErrorHelper
 
         public static List<string> ParseUrls(string input)
         {
+            var result = new List<string>();
+
+            result.AddRange(ParseUrlsWithPrefix(input, "https://"));
+            result.AddRange(ParseUrlsWithPrefix(input, "http://"));
+
+            return result;
+        }
+
+        public static List<string> ParseUrlsWithPrefix(string input, string prefix)
+        {
             var urls = new List<string>();
 
-            var nextStart = input.IndexOf("https://");
+            var nextStart = input.IndexOf(prefix);
 
             while (nextStart > -1)
             {
@@ -52,16 +62,16 @@ namespace ErrorHelper
                 if (end == -1)
                 {
                     // Will be true if domain ends at the end of the string
-                    urls.Add(input.Substring(nextStart));
+                    urls.Add(input.Substring(nextStart).TrimEnd('.'));
                     nextSearchStart = nextStart + 1;  // Need to set this to a valid value that will break the while loop
                 }
                 else
                 {
-                    urls.Add(input.Substring(nextStart, end - nextStart));
+                    urls.Add(input.Substring(nextStart, end - nextStart).TrimEnd('.'));
                     nextSearchStart = end;
                 }
 
-                nextStart = input.IndexOf("https://", nextSearchStart);
+                nextStart = input.IndexOf(prefix, nextSearchStart);
             }
 
             return urls;
