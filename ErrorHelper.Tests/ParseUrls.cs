@@ -69,6 +69,20 @@ the second is https://mrlacey.com/book",
         }
 
         [TestMethod]
+        public void ManyUrls_WithEndPunctuation()
+        {
+            InputProducesExpected(
+                @"Some text with many urls.
+The first is https://rapidxaml.dev. and
+the second is https://mrlacey.com/: and 
+the third is https://mrlacey.com/; and 
+the fourth is https://mrlacey.com/, and 
+the fifth is https://mrlacey.com/' and 
+the sixth is https://mrlacey.com/"" and ",
+                new List<string> { "https://rapidxaml.dev", "https://mrlacey.com/", "https://mrlacey.com/", "https://mrlacey.com/", "https://mrlacey.com/", "https://mrlacey.com/" });
+        }
+
+        [TestMethod]
         public void RealWorldExample()
         {
             InputProducesExpected(

@@ -53,6 +53,8 @@ namespace ErrorHelper
 
             var nextStart = input.IndexOf(prefix);
 
+            var trimEndChars = new[] { '.', ',', '"', ':', ';', '\'' };
+
             while (nextStart > -1)
             {
                 var end = input.IndexOfAny(new[] { ' ', "\r"[0], "\n"[0] }, nextStart);
@@ -62,12 +64,12 @@ namespace ErrorHelper
                 if (end == -1)
                 {
                     // Will be true if domain ends at the end of the string
-                    urls.Add(input.Substring(nextStart).TrimEnd('.'));
+                    urls.Add(input.Substring(nextStart).TrimEnd(trimEndChars));
                     nextSearchStart = nextStart + 1;  // Need to set this to a valid value that will break the while loop
                 }
                 else
                 {
-                    urls.Add(input.Substring(nextStart, end - nextStart).TrimEnd('.'));
+                    urls.Add(input.Substring(nextStart, end - nextStart).TrimEnd(trimEndChars));
                     nextSearchStart = end;
                 }
 
