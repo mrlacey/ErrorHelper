@@ -92,11 +92,21 @@ namespace ErrorHelper
 
             if (!string.IsNullOrEmpty(desc))
             {
-                string url = "https://www.bing.com/search?q=";
+                var searchEngine = ErrorHelperPackage.Instance?.Options?.SearchEngine;
 
-                if (ErrorHelperPackage.Instance?.Options?.SearchEngine == SearchEngine.Google)
+                string url;
+                switch (searchEngine)
                 {
-                    url = "https://www.google.com/search?q=";
+                    case SearchEngine.Google:
+                        url = "https://www.google.com/search?q=";
+                        break;
+                    case SearchEngine.StackOverflow:
+                        url = "https://stackoverflow.com/search?q=";
+                        break;
+                    case SearchEngine.Bing:
+                    default:
+                        url = "https://www.bing.com/search?q=";
+                        break;
                 }
 
                 string query = desc;
