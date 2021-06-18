@@ -8,6 +8,6 @@ namespace ErrorHelper
     {
         Bing,
         Google,
-        StackOverflow
+        StackOverflow,
     }
 }

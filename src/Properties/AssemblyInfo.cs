@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matt Lacey Ltd.")]
 [assembly: AssemblyProduct("ErrorHelper")]
-[assembly: AssemblyCopyright("2020 Matt Lacey Ltd.")]
+[assembly: AssemblyCopyright("2021 Matt Lacey Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("1.7.*")]
-[assembly: AssemblyFileVersion("1.7.0.0")]
+[assembly: AssemblyVersion("1.8.*")]
+[assembly: AssemblyFileVersion("1.8.0.0")]

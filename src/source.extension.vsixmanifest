@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="ErrorHelper.e90a7159-7bf3-45f6-b3d5-e80fd5978133" Version="1.7" Language="en-US" Publisher="Matt Lacey" />
+        <Identity Id="ErrorHelper.e90a7159-7bf3-45f6-b3d5-e80fd5978133" Version="1.8" Language="en-US" Publisher="Matt Lacey" />
         <DisplayName>ErrorHelper</DisplayName>
         <Description xml:space="preserve">Helper for using the ErrorList Description.</Description>
         <MoreInfo>https://github.com/mrlacey/ErrorHelper</MoreInfo>
@@ -10,6 +10,9 @@
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
