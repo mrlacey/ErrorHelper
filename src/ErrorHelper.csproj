@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CommandBase.cs" />
     <Compile Include="CopyDescriptionCommand.cs" />
+    <Compile Include="GeneralOutputPane.cs" />
     <Compile Include="OpenUrlCommand.cs" />
     <Compile Include="OptionPageGrid.cs">
       <SubType>Component</SubType>
@@ -57,6 +58,8 @@
     <Compile Include="ErrorHelperPackage.cs" />
     <Compile Include="SearchDescriptionCommand.cs" />
     <Compile Include="SearchEngine.cs" />
+    <Compile Include="SponsorDetector.cs" />
+    <Compile Include="SponsorRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

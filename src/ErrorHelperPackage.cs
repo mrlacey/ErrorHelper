@@ -45,6 +45,8 @@ namespace ErrorHelper
             await CopyDescriptionCommand.InitializeAsync(this);
             await SearchDescriptionCommand.InitializeAsync(this);
             await OpenUrlCommand.InitializeAsync(this);
+
+            await SponsorRequestHelper.CheckIfNeedToShowAsync();
         }
     }
 }
