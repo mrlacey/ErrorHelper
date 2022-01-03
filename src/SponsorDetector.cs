@@ -4,7 +4,6 @@
 
 using System;
 using System.Threading.Tasks;
-using Task = System.Threading.Tasks.Task;
 
 namespace ErrorHelper
 {

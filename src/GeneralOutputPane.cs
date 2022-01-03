@@ -1,4 +1,4 @@
-﻿// <copyright file="ErrorHelperPackage.cs" company="Matt Lacey Limited">
+﻿// <copyright file="GeneralOutputPane.cs" company="Matt Lacey Limited">
 // Copyright (c) Matt Lacey Limited. All rights reserved.
 // </copyright>
 
