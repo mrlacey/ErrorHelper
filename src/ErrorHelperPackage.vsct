@@ -1,45 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <Extern href="stdidcmd.h" />
-  <Extern href="vsshlids.h" />
-  <Commands package="guidErrorHelperPackage">
-    <Groups>
-      <Group guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ERRORLIST" />
-      </Group>
-    </Groups>
+	<Extern href="stdidcmd.h" />
+	<Extern href="vsshlids.h" />
+	<Commands package="guidErrorHelperPackage">
+		<Groups>
+			<Group guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ERRORLIST" />
+			</Group>
+		</Groups>
 
-    <Buttons>
-      <Button guid="guidErrorHelperPackageCmdSet" id="CopyDescriptionCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
-        <Strings>
-          <ButtonText>Copy Description</ButtonText>
-        </Strings>
-      </Button>
-        <Button guid="guidErrorHelperPackageCmdSet" id="cmdidSearchDescriptionCommand" priority="0x0100" type="Button">
-            <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
-            <Strings>
-                <ButtonText>Search Description</ButtonText>
-            </Strings>
-        </Button>
-        <Button guid="guidErrorHelperPackageCmdSet" id="cmdidOpenUrlCommand" priority="0x0300" type="Button">
-            <Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
-            <Strings>
-                <ButtonText>Open URL</ButtonText>
-            </Strings>
-        </Button>
-    </Buttons>
-  </Commands>
+		<Buttons>
+			<Button guid="guidErrorHelperPackageCmdSet" id="CopyDescriptionCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<CanonicalName>.ErrorHelper.CopyDescription</CanonicalName>
+					<ButtonText>Copy Description</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidErrorHelperPackageCmdSet" id="cmdidSearchDescriptionCommand" priority="0x0100" type="Button">
+				<Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<CanonicalName>.ErrorHelper.SearchDescription</CanonicalName>
+					<ButtonText>Search Description</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidErrorHelperPackageCmdSet" id="cmdidSearchDescriptionWithoutPathsCommand" priority="0x0100" type="Button">
+				<Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<CanonicalName>.ErrorHelper.SearchDescriptionWithoutPaths</CanonicalName>
+					<ButtonText>Search Description (without paths)</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidErrorHelperPackageCmdSet" id="cmdidOpenUrlCommand" priority="0x0300" type="Button">
+				<Parent guid="guidErrorHelperPackageCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<CanonicalName>.ErrorHelper.OpenUrl</CanonicalName>
+					<ButtonText>Open URL</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
 
-  <Symbols>
-    <GuidSymbol name="guidErrorHelperPackage" value="{3f9fa707-35b8-42f5-a623-8fa0ab37a05c}" />
+	<Symbols>
+		<GuidSymbol name="guidErrorHelperPackage" value="{3f9fa707-35b8-42f5-a623-8fa0ab37a05c}" />
 
-    <GuidSymbol name="guidErrorHelperPackageCmdSet" value="{5fea58eb-df34-46e8-ab5d-4708b07cf330}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="CopyDescriptionCommandId" value="0x0100" />
-      <IDSymbol value="4129" name="cmdidSearchDescriptionCommand" />
-      <IDSymbol value="4130" name="cmdidOpenUrlCommand" />
-    </GuidSymbol>
-  </Symbols>
+		<GuidSymbol name="guidErrorHelperPackageCmdSet" value="{5fea58eb-df34-46e8-ab5d-4708b07cf330}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="CopyDescriptionCommandId" value="0x0100" />
+			<IDSymbol value="4129" name="cmdidSearchDescriptionCommand" />
+			<IDSymbol value="4130" name="cmdidOpenUrlCommand" />
+			<IDSymbol value="4131" name="cmdidSearchDescriptionWithoutPathsCommand" />
+		</GuidSymbol>
+	</Symbols>
 </CommandTable>

@@ -80,7 +80,7 @@ namespace ErrorHelper.Tests
 
         private void InputProducesExpected(string input, string expected)
         {
-            var actual = SearchDescriptionCommand.StripPaths(input);
+            var actual = SearchDescriptionWithoutPathsCommand.StripPaths(input);
 
             Assert.AreEqual(expected, actual);
         }
