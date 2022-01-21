@@ -31,7 +31,7 @@ namespace ErrorHelper.Tests
         }
 
         [TestMethod]
-        public void SpacesAround_AbsolutePath()
+        public void SpacesAround_AbsolutePath_ForwardSlash()
         {
             InputProducesExpected(
                 "something is wrong in C:/path/file.ext that needs fixing.",
@@ -39,7 +39,7 @@ namespace ErrorHelper.Tests
         }
 
         [TestMethod]
-        public void SingleQuoteAround_AbsolutePath()
+        public void SingleQuoteAround_AbsolutePath_ForwardSlash()
         {
             InputProducesExpected(
                 "something is wrong in 'C:/path/file.ext' that needs fixing.",
@@ -47,7 +47,7 @@ namespace ErrorHelper.Tests
         }
 
         [TestMethod]
-        public void SpacesAround_RelativePath()
+        public void SpacesAround_RelativePath_ForwardSlash()
         {
             InputProducesExpected(
                 "something is wrong in ../otherpath/file.ext that needs fixing.",
@@ -55,10 +55,42 @@ namespace ErrorHelper.Tests
         }
 
         [TestMethod]
-        public void SingleQuoteAround_RelativePath()
+        public void SingleQuoteAround_RelativePath_ForwardSlash()
         {
             InputProducesExpected(
                 "something is wrong in '../otherpath/file.ext' that needs fixing.",
+                "something is wrong in  that needs fixing.");
+        }
+
+        [TestMethod]
+        public void SpacesAround_AbsolutePath_BackwardSlash()
+        {
+            InputProducesExpected(
+                "something is wrong in C:\\path\\file.ext that needs fixing.",
+                "something is wrong in  that needs fixing.");
+        }
+
+        [TestMethod]
+        public void SingleQuoteAround_AbsolutePath_BackwardSlash()
+        {
+            InputProducesExpected(
+                "something is wrong in 'C:\\path\\file.ext' that needs fixing.",
+                "something is wrong in  that needs fixing.");
+        }
+
+        [TestMethod]
+        public void SpacesAround_RelativePath_BackwardSlash()
+        {
+            InputProducesExpected(
+                "something is wrong in ..\\otherpath\\file.ext that needs fixing.",
+                "something is wrong in  that needs fixing.");
+        }
+
+        [TestMethod]
+        public void SingleQuoteAround_RelativePath_BackwardSlash()
+        {
+            InputProducesExpected(
+                "something is wrong in '..\\otherpath\\file.ext' that needs fixing.",
                 "something is wrong in  that needs fixing.");
         }
 

@@ -39,45 +39,65 @@ namespace ErrorHelper
         {
             var result = descriptionContainingPaths ?? string.Empty;
 
-            if (result.Contains(":/"))
+            string WithoutAbsolutePath(string original, string identifier)
             {
-                var pathStartPos = result.IndexOf(":/");
+                var res = original;
 
-                if (char.IsLetter(result[pathStartPos - 1])
-                 && !char.IsLetterOrDigit(result[pathStartPos - 2]))
+                if (res.Contains(identifier))
                 {
-                    pathStartPos -= 1;
+                    var pathStartPos = res.IndexOf(identifier);
 
-                    var endPos = result.IndexOf(" ", pathStartPos);
-
-                    if (result[pathStartPos - 1] == '\'')
+                    if (char.IsLetter(res[pathStartPos - 1])
+                     && !char.IsLetterOrDigit(res[pathStartPos - 2]))
                     {
-                        endPos = result.IndexOf("'", pathStartPos) + 1;
+                        pathStartPos -= 1;
+
+                        var endPos = res.IndexOf(" ", pathStartPos);
+
+                        if (res[pathStartPos - 1] == '\'')
+                        {
+                            endPos = res.IndexOf("'", pathStartPos) + 1;
+                            pathStartPos -= 1;
+                        }
+
+                        var firstPart = res.Substring(0, pathStartPos);
+
+                        res = firstPart + res.Substring(endPos);
+                    }
+                }
+
+                return res;
+            }
+
+            result = WithoutAbsolutePath(result, ":/");
+            result = WithoutAbsolutePath(result, ":\\");
+
+            string WithoutRelativePath(string original, string identifier)
+            {
+                var res = original;
+
+                if (res.Contains(identifier))
+                {
+                    var pathStartPos = res.IndexOf(identifier);
+
+                    var endPos = res.IndexOf(" ", pathStartPos);
+
+                    if (res[pathStartPos - 1] == '\'')
+                    {
+                        endPos = res.IndexOf("'", pathStartPos) + 1;
                         pathStartPos -= 1;
                     }
 
-                    var firstPart = result.Substring(0, pathStartPos);
+                    var firstPart = res.Substring(0, pathStartPos);
 
-                    result = firstPart + result.Substring(endPos);
-                }
-            }
-
-            if (result.Contains("../"))
-            {
-                var pathStartPos = result.IndexOf("../");
-
-                var endPos = result.IndexOf(" ", pathStartPos);
-
-                if (result[pathStartPos - 1] == '\'')
-                {
-                    endPos = result.IndexOf("'", pathStartPos) + 1;
-                    pathStartPos -= 1;
+                    res = firstPart + res.Substring(endPos);
                 }
 
-                var firstPart = result.Substring(0, pathStartPos);
-
-                result = firstPart + result.Substring(endPos);
+                return res;
             }
+
+            result = WithoutRelativePath(result, "../");
+            result = WithoutRelativePath(result, "..\\");
 
             return result;
         }
