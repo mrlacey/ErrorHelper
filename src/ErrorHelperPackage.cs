@@ -16,8 +16,8 @@ namespace ErrorHelper
     [Guid(ErrorHelperPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [InstalledProductRegistration("#110", "#112", "2.2")] // Info on this package for Help/About
-    [ProvideOptionPage(typeof(OptionPageGrid), "Error Helper", "General", 0, 0, true)]
-    [ProvideProfileAttribute(typeof(OptionPageGrid), "Error Helper", "General", 106, 107, isToolsOptionPage: true)]
+    [ProvideOptionPage(typeof(OptionPageGrid), Vsix.Name, "General", 0, 0, true)]
+    [ProvideProfileAttribute(typeof(OptionPageGrid), Vsix.Name, "General", 106, 107, isToolsOptionPage: true)]
     public sealed class ErrorHelperPackage : AsyncPackage
     {
         public const string PackageGuidString = "3f9fa707-35b8-42f5-a623-8fa0ab37a05c";

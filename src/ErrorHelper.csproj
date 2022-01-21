@@ -60,6 +60,11 @@
     <Compile Include="SearchDescriptionWithoutPathsCommand.cs" />
     <Compile Include="SearchDescriptionCommand.cs" />
     <Compile Include="SearchEngine.cs" />
+    <Compile Include="source.extension.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>source.extension.vsixmanifest</DependentUpon>
+    </Compile>
     <Compile Include="SponsorDetector.cs" />
     <Compile Include="SponsorRequestHelper.cs" />
   </ItemGroup>
@@ -68,6 +73,8 @@
     <None Include="ErrorHelper.ruleset" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
+      <Generator>VsixManifestGenerator</Generator>
+      <LastGenOutput>source.extension.cs</LastGenOutput>
     </None>
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>

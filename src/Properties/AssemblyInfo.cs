@@ -4,17 +4,18 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using ErrorHelper;
 
-[assembly: AssemblyTitle("ErrorHelper")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle(Vsix.Name)]
+[assembly: AssemblyDescription(Vsix.Description)]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matt Lacey Ltd.")]
-[assembly: AssemblyProduct("ErrorHelper")]
-[assembly: AssemblyCopyright("2021 Matt Lacey Ltd.")]
+[assembly: AssemblyProduct(Vsix.Name)]
+[assembly: AssemblyCopyright("2022 Matt Lacey Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("2.2.*")]
-[assembly: AssemblyFileVersion("2.2.0.0")]
+[assembly: AssemblyVersion(Vsix.Version)]
+[assembly: AssemblyFileVersion(Vsix.Version)]
