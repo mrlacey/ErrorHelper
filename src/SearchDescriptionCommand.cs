@@ -57,8 +57,11 @@ namespace ErrorHelper
                         url = "https://stackoverflow.com/search?q=";
                         break;
                     case SearchEngine.Bing:
-                    default:
                         url = "https://www.bing.com/search?q=";
+                        break;
+                    case SearchEngine.Ecosia:
+                    default:
+                        url = "https://www.ecosia.org/search?q=";
                         break;
                 }
 

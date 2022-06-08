@@ -6,6 +6,7 @@ namespace ErrorHelper
 {
     public enum SearchEngine
     {
+        Ecosia,
         Bing,
         Google,
         StackOverflow,
