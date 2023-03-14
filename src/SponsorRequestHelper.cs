@@ -3,6 +3,7 @@
 // </copyright>
 
 using System;
+using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
 namespace ErrorHelper
@@ -15,25 +16,29 @@ namespace ErrorHelper
             {
                 if (new Random().Next(1, 10) == 2)
                 {
-                    ShowThanksForSponsorshipMessage();
+                    await ShowThanksForSponsorshipMessageAsync();
                 }
             }
             else
             {
-                ShowPromptForSponsorship();
+                await ShowPromptForSponsorshipAsync();
             }
         }
 
-        private static void ShowThanksForSponsorshipMessage()
+        private static async Task ShowThanksForSponsorshipMessageAsync()
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             GeneralOutputPane.Instance.WriteLine("Thank you for your sponsorship. It really helps.");
             GeneralOutputPane.Instance.WriteLine("If you have ideas for new features or suggestions for new features");
             GeneralOutputPane.Instance.WriteLine("please raise an issue at https://github.com/mrlacey/ErrorHelper/issues");
             GeneralOutputPane.Instance.WriteLine(string.Empty);
         }
 
-        private static void ShowPromptForSponsorship()
+        private static async Task ShowPromptForSponsorshipAsync()
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             GeneralOutputPane.Instance.WriteLine("Sorry to interrupt. I know your time is busy, presumably that's why you installed this extension (Error Helper).");
             GeneralOutputPane.Instance.WriteLine("I'm happy that the extensions I've created have been able to help you and many others");
             GeneralOutputPane.Instance.WriteLine("but I also need to make a living, and limited paid work over the last few years has been a challenge. :(");
