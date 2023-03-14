@@ -62,5 +62,35 @@ namespace ErrorHelper
                 System.Diagnostics.Debug.WriteLine(exc);
             }
         }
+
+        protected string GetSearchUrlBase()
+        {
+            try
+            {
+                var searchEngine = ErrorHelperPackage.Instance?.Options?.SearchEngine;
+
+                switch (searchEngine)
+                {
+                    case SearchEngine.Google:
+                        return "https://www.google.com/search?q=";
+
+                    case SearchEngine.StackOverflow:
+                        return "https://stackoverflow.com/search?q=";
+
+                    case SearchEngine.Bing:
+                        return "https://www.bing.com/search?q=";
+
+                    case SearchEngine.Ecosia:
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine(exc);
+            }
+
+            return "https://www.ecosia.org/search?q=";
+        }
     }
 }

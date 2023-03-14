@@ -39,11 +39,19 @@ namespace ErrorHelper
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var desc = await this.GetDescriptionAsync();
-
-            if (!string.IsNullOrEmpty(desc))
+            try
             {
-                System.Windows.Forms.Clipboard.SetText(desc);
+                var desc = await this.GetDescriptionAsync();
+
+                if (!string.IsNullOrEmpty(desc))
+                {
+                    System.Windows.Forms.Clipboard.SetText(desc);
+                }
+            }
+            catch (Exception exc)
+            {
+                GeneralOutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
+                await this.ShowStatusBarMessageAsync("Unable to copy error description.");
             }
         }
     }

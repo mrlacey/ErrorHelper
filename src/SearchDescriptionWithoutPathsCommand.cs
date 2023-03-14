@@ -108,36 +108,28 @@ namespace ErrorHelper
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var desc = await this.GetDescriptionAsync();
-
-            if (!string.IsNullOrEmpty(desc))
+            try
             {
-                var searchEngine = ErrorHelperPackage.Instance?.Options?.SearchEngine;
+                var desc = await this.GetDescriptionAsync();
 
-                string url;
-                switch (searchEngine)
+                if (!string.IsNullOrEmpty(desc))
                 {
-                    case SearchEngine.Google:
-                        url = "https://www.google.com/search?q=";
-                        break;
-                    case SearchEngine.StackOverflow:
-                        url = "https://stackoverflow.com/search?q=";
-                        break;
-                    case SearchEngine.Bing:
-                    default:
-                        url = "https://www.bing.com/search?q=";
-                        break;
+                    string url = this.GetSearchUrlBase();
+                    string query = StripPaths(desc);
+
+                    var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(query))
+                    {
+                        UseShellExecute = true,
+                        Verb = "open",
+                    };
+
+                    Process.Start(ps);
                 }
-
-                string query = StripPaths(desc);
-
-                var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(query))
-                {
-                    UseShellExecute = true,
-                    Verb = "open",
-                };
-
-                Process.Start(ps);
+            }
+            catch (Exception exc)
+            {
+                GeneralOutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
+                await this.ShowStatusBarMessageAsync("Unable to search for error description.");
             }
         }
     }
