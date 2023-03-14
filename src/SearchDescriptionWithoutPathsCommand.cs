@@ -52,7 +52,7 @@ namespace ErrorHelper
                     {
                         pathStartPos -= 1;
 
-                        var endPos = res.IndexOf(" ", pathStartPos);
+                        var endPos = res.IndexOf(res[pathStartPos - 1], pathStartPos);
 
                         if (res[pathStartPos - 1] == '\'')
                         {
@@ -62,7 +62,14 @@ namespace ErrorHelper
 
                         var firstPart = res.Substring(0, pathStartPos);
 
-                        res = firstPart + res.Substring(endPos);
+                        if (endPos > 0)
+                        {
+                            res = firstPart + res.Substring(endPos);
+                        }
+                        else
+                        {
+                            res = firstPart;
+                        }
                     }
                 }
 

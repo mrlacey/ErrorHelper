@@ -110,6 +110,22 @@ namespace ErrorHelper.Tests
                 "something is wrong in 'http://example.com' that needs fixing.");
         }
 
+        [TestMethod]
+        public void QuotedUrlAtEndOfString_NoError()
+        {
+            InputProducesExpected(
+                "something is wrong in \"http://example.com\"",
+                "something is wrong in \"http://example.com\"");
+        }
+
+        [TestMethod]
+        public void Issue13()
+        {
+            InputProducesExpected(
+                "\"double Triangle::getArea(int x) const\" (declared at line 11 of \"C:\\Users\\Lars\\OneDrive\\programming\\geomalgorithms\\geomalgorithms\\triangle.h\")",
+                "\"double Triangle::getArea(int x) const\" (declared at line 11 of \"\")");
+        }
+
         private void InputProducesExpected(string input, string expected)
         {
             var actual = SearchDescriptionWithoutPathsCommand.StripPaths(input);
