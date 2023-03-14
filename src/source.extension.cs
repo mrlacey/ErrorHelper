@@ -11,7 +11,7 @@ namespace ErrorHelper
         public const string Name = "Error Helper";
         public const string Description = @"Helper for using the ErrorList Description.";
         public const string Language = "en-US";
-        public const string Version = "2.5";
+        public const string Version = "2.6";
         public const string Author = "Matt Lacey";
         public const string Tags = "";
     }

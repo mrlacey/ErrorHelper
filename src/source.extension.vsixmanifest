@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-    <Metadata>
-        <Identity Id="ErrorHelper.e90a7159-7bf3-45f6-b3d5-e80fd5978133" Version="2.5" Language="en-US" Publisher="Matt Lacey" />
-        <DisplayName>Error Helper</DisplayName>
-        <Description xml:space="preserve">Helper for using the ErrorList Description.</Description>
-        <MoreInfo>https://github.com/mrlacey/ErrorHelper</MoreInfo>
-        <Icon>ErrorHelper.png</Icon>
-        <PreviewImage>ErrorHelper.png</PreviewImage>
-    </Metadata>
-    <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Community">
-            <ProductArchitecture>arm64</ProductArchitecture>
-        </InstallationTarget>
-    </Installation>
-    <Dependencies>
-    </Dependencies>
-    <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,)" DisplayName="Visual Studio core editor" />
-    </Prerequisites>
-    <Assets>
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    </Assets>
+	<Metadata>
+		<Identity Id="ErrorHelper.e90a7159-7bf3-45f6-b3d5-e80fd5978133" Version="2.6" Language="en-US" Publisher="Matt Lacey" />
+		<DisplayName>Error Helper</DisplayName>
+		<Description xml:space="preserve">Helper for using the ErrorList Description.</Description>
+		<MoreInfo>https://github.com/mrlacey/ErrorHelper</MoreInfo>
+		<Icon>ErrorHelper.png</Icon>
+		<PreviewImage>ErrorHelper.png</PreviewImage>
+	</Metadata>
+	<Installation>
+		<InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+			<ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
+		<InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Community">
+			<ProductArchitecture>arm64</ProductArchitecture>
+		</InstallationTarget>
+	</Installation>
+	<Dependencies>
+	</Dependencies>
+	<Prerequisites>
+		<Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,)" DisplayName="Visual Studio core editor" />
+	</Prerequisites>
+	<Assets>
+		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+	</Assets>
 </PackageManifest>
