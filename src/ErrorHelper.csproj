@@ -50,11 +50,11 @@
   <ItemGroup>
     <Compile Include="CommandBase.cs" />
     <Compile Include="CopyDescriptionCommand.cs" />
-    <Compile Include="GeneralOutputPane.cs" />
     <Compile Include="OpenUrlCommand.cs" />
     <Compile Include="OptionPageGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="OutputPane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ErrorHelperPackage.cs" />
     <Compile Include="SearchDescriptionWithoutPathsCommand.cs" />
