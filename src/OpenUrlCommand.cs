@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -53,7 +52,7 @@ namespace ErrorHelper
 
             var nextStart = input.IndexOf(prefix);
 
-            var trimEndChars = new[] { '.', ',', '"', ':', ';', '\'' };
+            var trimEndChars = new[] { '.', ',', '"', ':', ';', '\'', ')' };
 
             while (nextStart > -1)
             {
