@@ -8,6 +8,7 @@ namespace ErrorHelper
     {
         Ecosia,
         Bing,
+        DuckDuckGo,
         Google,
         StackOverflow,
     }

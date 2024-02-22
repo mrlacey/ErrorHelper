@@ -80,6 +80,9 @@ namespace ErrorHelper
                     case SearchEngine.Bing:
                         return "https://www.bing.com/search?q=";
 
+                    case SearchEngine.DuckDuckGo:
+                        return "https://duckduckgo.com/?q=";
+
                     case SearchEngine.Ecosia:
                     default:
                         break;
