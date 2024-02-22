@@ -83,6 +83,9 @@ namespace ErrorHelper
                     case SearchEngine.DuckDuckGo:
                         return "https://duckduckgo.com/?q=";
 
+                    case SearchEngine.Custom:
+                        return ErrorHelperPackage.Instance?.Options?.SearchUrl;
+
                     case SearchEngine.Ecosia:
                     default:
                         break;

@@ -14,6 +14,11 @@ namespace ErrorHelper
         [Description("Where to do the search.")]
         public SearchEngine SearchEngine { get; set; }
 
+        [Category("Error Helper")]
+        [DisplayName("Custom search URL")]
+        [Description("What URL prefix should be used with a \"Custom\" search.")]
+        public string SearchUrl { get; set; } = "https://example.com/search?q=";
+
         ////[Category("Error Helper")]
         ////[DisplayName("Strip Paths Before Search")]
         ////[Description("Remove anything that looks like a file path from the value sent to the search engine.")]
