@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using EnvDTE;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -34,11 +35,18 @@ namespace ErrorHelper
 
 				if (itemsEnum.Next(1, vsTaskItem, null) == 0)
 				{
-					vsTaskItem[0].get_Text(out string description);
+					var getTextResult = vsTaskItem[0].get_Text(out string description);
 
-					if (!string.IsNullOrWhiteSpace(description))
+					if (getTextResult == VSConstants.S_OK)
 					{
-						return description;
+						if (!string.IsNullOrWhiteSpace(description))
+						{
+							return description;
+						}
+					}
+					else
+					{
+						System.Diagnostics.Debug.WriteLine($"Error getting Text from IVsTaskItem: {getTextResult}");
 					}
 				}
 			}
