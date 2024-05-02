@@ -55,8 +55,9 @@ namespace ErrorHelper
 			}
 			catch (Exception exc)
 			{
-				OutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
 				await this.ShowStatusBarMessageAsync("Unable to copy error description.");
+				OutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
+				OutputPane.Instance.Activate();
 			}
 		}
 	}

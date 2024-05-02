@@ -11,133 +11,134 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ErrorHelper
 {
-    public sealed class SearchDescriptionWithoutPathsCommand : CommandBase
-    {
-        public const int CommandId = 4131;
+	public sealed class SearchDescriptionWithoutPathsCommand : CommandBase
+	{
+		public const int CommandId = 4131;
 
-        private SearchDescriptionWithoutPathsCommand(AsyncPackage package, OleMenuCommandService commandService)
-            : base(package)
-        {
-            commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
+		private SearchDescriptionWithoutPathsCommand(AsyncPackage package, OleMenuCommandService commandService)
+			: base(package)
+		{
+			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
-            var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
-            commandService.AddCommand(menuItem);
-        }
+			var menuCommandID = new CommandID(CommandSet, CommandId);
+			var menuItem = new MenuCommand(this.Execute, menuCommandID);
+			commandService.AddCommand(menuItem);
+		}
 
-        public static SearchDescriptionWithoutPathsCommand Instance { get; private set; }
+		public static SearchDescriptionWithoutPathsCommand Instance { get; private set; }
 
-        public static async Task InitializeAsync(AsyncPackage package)
-        {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
+		public static async Task InitializeAsync(AsyncPackage package)
+		{
+			await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
-            OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new SearchDescriptionWithoutPathsCommand(package, commandService);
-        }
+			OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
+			Instance = new SearchDescriptionWithoutPathsCommand(package, commandService);
+		}
 
-        public static string StripPaths(string descriptionContainingPaths)
-        {
-            var result = descriptionContainingPaths ?? string.Empty;
+		public static string StripPaths(string descriptionContainingPaths)
+		{
+			var result = descriptionContainingPaths ?? string.Empty;
 
-            string WithoutAbsolutePath(string original, string identifier)
-            {
-                var res = original;
+			string WithoutAbsolutePath(string original, string identifier)
+			{
+				var res = original;
 
-                if (res.Contains(identifier))
-                {
-                    var pathStartPos = res.IndexOf(identifier);
+				if (res.Contains(identifier))
+				{
+					var pathStartPos = res.IndexOf(identifier);
 
-                    if (char.IsLetter(res[pathStartPos - 1])
-                     && !char.IsLetterOrDigit(res[pathStartPos - 2]))
-                    {
-                        pathStartPos -= 1;
+					if (char.IsLetter(res[pathStartPos - 1])
+					 && !char.IsLetterOrDigit(res[pathStartPos - 2]))
+					{
+						pathStartPos -= 1;
 
-                        var endPos = res.IndexOf(res[pathStartPos - 1], pathStartPos);
+						var endPos = res.IndexOf(res[pathStartPos - 1], pathStartPos);
 
-                        if (res[pathStartPos - 1] == '\'')
-                        {
-                            endPos = res.IndexOf("'", pathStartPos) + 1;
-                            pathStartPos -= 1;
-                        }
+						if (res[pathStartPos - 1] == '\'')
+						{
+							endPos = res.IndexOf("'", pathStartPos) + 1;
+							pathStartPos -= 1;
+						}
 
-                        var firstPart = res.Substring(0, pathStartPos);
+						var firstPart = res.Substring(0, pathStartPos);
 
-                        if (endPos > 0)
-                        {
-                            res = firstPart + res.Substring(endPos);
-                        }
-                        else
-                        {
-                            res = firstPart;
-                        }
-                    }
-                }
+						if (endPos > 0)
+						{
+							res = firstPart + res.Substring(endPos);
+						}
+						else
+						{
+							res = firstPart;
+						}
+					}
+				}
 
-                return res;
-            }
+				return res;
+			}
 
-            result = WithoutAbsolutePath(result, ":/");
-            result = WithoutAbsolutePath(result, ":\\");
+			result = WithoutAbsolutePath(result, ":/");
+			result = WithoutAbsolutePath(result, ":\\");
 
-            string WithoutRelativePath(string original, string identifier)
-            {
-                var res = original;
+			string WithoutRelativePath(string original, string identifier)
+			{
+				var res = original;
 
-                if (res.Contains(identifier))
-                {
-                    var pathStartPos = res.IndexOf(identifier);
+				if (res.Contains(identifier))
+				{
+					var pathStartPos = res.IndexOf(identifier);
 
-                    var endPos = res.IndexOf(" ", pathStartPos);
+					var endPos = res.IndexOf(" ", pathStartPos);
 
-                    if (res[pathStartPos - 1] == '\'')
-                    {
-                        endPos = res.IndexOf("'", pathStartPos) + 1;
-                        pathStartPos -= 1;
-                    }
+					if (res[pathStartPos - 1] == '\'')
+					{
+						endPos = res.IndexOf("'", pathStartPos) + 1;
+						pathStartPos -= 1;
+					}
 
-                    var firstPart = res.Substring(0, pathStartPos);
+					var firstPart = res.Substring(0, pathStartPos);
 
-                    res = firstPart + res.Substring(endPos);
-                }
+					res = firstPart + res.Substring(endPos);
+				}
 
-                return res;
-            }
+				return res;
+			}
 
-            result = WithoutRelativePath(result, "../");
-            result = WithoutRelativePath(result, "..\\");
+			result = WithoutRelativePath(result, "../");
+			result = WithoutRelativePath(result, "..\\");
 
-            return result;
-        }
+			return result;
+		}
 
 #pragma warning disable VSTHRD100 // Avoid async void methods
-        private async void Execute(object sender, EventArgs e)
+		private async void Execute(object sender, EventArgs e)
 #pragma warning restore VSTHRD100 // Avoid async void methods
-        {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+		{
+			await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            try
-            {
-                var desc = await this.GetDescriptionAsync();
+			try
+			{
+				var desc = await this.GetDescriptionAsync();
 
-                if (!string.IsNullOrEmpty(desc))
-                {
-                    string url = this.GetSearchUrlBase();
-                    string query = StripPaths(desc);
+				if (!string.IsNullOrEmpty(desc))
+				{
+					string url = this.GetSearchUrlBase();
+					string query = StripPaths(desc);
 
-                    var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(query))
-                    {
-                        UseShellExecute = true,
-                        Verb = "open",
-                    };
+					var ps = new ProcessStartInfo(url + WebUtility.UrlEncode(query))
+					{
+						UseShellExecute = true,
+						Verb = "open",
+					};
 
-                    Process.Start(ps);
-                }
-            }
-            catch (Exception exc)
-            {
-                OutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
-                await this.ShowStatusBarMessageAsync("Unable to search for error description.");
-            }
-        }
-    }
+					Process.Start(ps);
+				}
+			}
+			catch (Exception exc)
+			{
+				await this.ShowStatusBarMessageAsync("Unable to search for error description.");
+				OutputPane.Instance.WriteLine($"ErrorHelper: {exc}");
+				OutputPane.Instance.Activate();
+			}
+		}
+	}
 }
