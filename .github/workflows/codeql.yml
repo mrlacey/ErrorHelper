@@ -72,9 +72,7 @@ jobs:
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
-    - run: |
-        nuget restore
-        msbuild /p:UseSharedCompilation=false 
+    - run: msbuild /src/ErrorHelper.sln -t:Restore /p:UseSharedCompilation=false 
 
     # If the analyze step fails for one of the languages you are analyzing with
     # "We were unable to automatically build your code", modify the matrix above
