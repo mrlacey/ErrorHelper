@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31410.414
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHelper", "ErrorHelper.csproj", "{509E30AA-A6E4-44CD-A7E9-52E672D8A4D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHelper.Tests", "..\ErrorHelper.Tests\ErrorHelper.Tests.csproj", "{213B6CCA-C5AA-4BB4-A935-BA3F75491E57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHelper.Tests", "ErrorHelper.Tests\ErrorHelper.Tests.csproj", "{213B6CCA-C5AA-4BB4-A935-BA3F75491E57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2C9AEA3-2E50-491C-B538-7D1B13FE1265}"
 	ProjectSection(SolutionItems) = preProject
