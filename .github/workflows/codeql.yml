@@ -70,11 +70,11 @@ jobs:
         # queries: security-extended,security-and-quality
 
 
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v2
-    - run: |
-        nuget restore /src/ErrorHelper.sln
-        msbuild /src/ErrorHelper.sln
+   # - name: Add msbuild to PATH
+   #   uses: microsoft/setup-msbuild@v2
+   # - run: |
+   #     nuget restore /src/ErrorHelper.sln
+   #     msbuild /src/ErrorHelper.sln
 
     # If the analyze step fails for one of the languages you are analyzing with
     # "We were unable to automatically build your code", modify the matrix above
