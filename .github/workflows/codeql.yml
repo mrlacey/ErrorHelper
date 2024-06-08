@@ -92,7 +92,7 @@ jobs:
   
     - name: Generate SBOM
       run: |
-        Invoke-WebRequest -Uri  https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64 -OutFile "sbom-tool.exe"
+        Invoke-WebRequest -Uri "https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe" -OutFile "sbom-tool.exe"
 
         sbom-tool generate -b ./buildOutput -bc . -pn Test -pv 1.0.0 -ps MyCompany -nsb https://sbom.mycompany.com -V Verbose
 
