@@ -94,7 +94,7 @@ jobs:
       run: |
         Invoke-WebRequest -Uri "https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe" -OutFile "sbom-tool.exe"
 
-        Start-Process -FilePath "sbom-tool.exe" -ArgumentList "generate -b ./src/bin/Debug/ -bc ./src/bin/Debug -pn ErrorHelper -pv 1.0.0 -ps MRLacey -nsb https://sbom.mrlacey.com -V Verbose"
+        Start-Process -FilePath "sbom-tool.exe" -ArgumentList "generate -b ./src/bin/Debug/ -bc ./src/bin/Debug -pn ErrorHelper -pv 1.0.0 -ps MRLacey -nsb https://sbom.mrlacey.com -V Verbose" -NoNewWindow
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
