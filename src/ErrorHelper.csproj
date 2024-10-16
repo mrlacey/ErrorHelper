@@ -91,9 +91,6 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.31902.203" ExcludeAssets="runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VSSDK.Vsixsigntool">
-      <Version>17.10.34916.79</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="ErrorHelperPackage.vsct">
