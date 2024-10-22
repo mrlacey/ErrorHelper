@@ -41,7 +41,7 @@ jobs:
         vsix-token-source-file: ${{ env.VsixManifestSourcePath }}
 
     - name: Build
-      run: msbuild /v:m -restore /p:OutDir=\_built ./src/ErrorHelper.sln
+      run: msbuild /v:m -t:Restore -restore /p:OutDir=\_built ./src/ErrorHelper.sln
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
