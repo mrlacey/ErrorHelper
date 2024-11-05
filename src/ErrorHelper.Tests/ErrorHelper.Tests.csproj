@@ -49,10 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MSTest.TestAdapter">
-      <Version>3.6.1</Version>
+      <Version>3.6.2</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestFramework">
-      <Version>3.6.1</Version>
+      <Version>3.6.2</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.Analyzers">
+      <Version>3.6.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="WarnAboutTODOs">
       <Version>1.6.0</Version>
