@@ -9,3 +9,6 @@ updates:
     directory: "/src/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # Don't want to automatically update the SDK as it needs to match the min target version of the extension
+      - dependency-name: "Microsoft.VisualStudio.SDK"
