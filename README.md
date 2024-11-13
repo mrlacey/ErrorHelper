@@ -15,3 +15,6 @@ Make it easier to work with items in the Visual Studio Error List by copying or 
 No more wasting time copying the whole row and then extracting the description. This extension adds helper commands to make it easier to deal with errors.
 
 When there are bugs to fix, you don't want to mess about with re-typing error messages or a clipboard full of unhelpful junk.
+
+Search for the error message (with or without any identifying paths or file names) directly from Visual Studio.  
+Or, directly open the URL in an error message.
