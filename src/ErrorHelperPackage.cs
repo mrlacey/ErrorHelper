@@ -55,7 +55,7 @@ namespace ErrorHelper
 
 		private static void TrackBasicUsageAnalytics()
 		{
-#if DEBUG
+#if !DEBUG
 			try
 			{
 				if (string.IsNullOrWhiteSpace(AnalyticsConfig.TelemetryConnectionString))
