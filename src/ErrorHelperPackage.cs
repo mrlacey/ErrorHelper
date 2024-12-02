@@ -74,7 +74,7 @@ namespace ErrorHelper
 				{
 					{ "VsixVersion", Vsix.Version },
 					{ "VsVersion", Microsoft.VisualStudio.Telemetry.TelemetryService.DefaultSession?.GetSharedProperty("VS.Core.ExeVersion") },
-				{ "Architecture", RuntimeInformation.ProcessArchitecture.ToString() },
+					{ "Architecture", RuntimeInformation.ProcessArchitecture.ToString() },
 				};
 
 				client.TrackEvent(Vsix.Name, properties);
