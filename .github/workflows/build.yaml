@@ -17,6 +17,9 @@ jobs:
       version: ${{ steps.vsix_version.outputs.version-number }}
     name: Build 
     runs-on: windows-2022
+    permissions:
+      checks: write
+      pull-requests: write
     env:
       Configuration: Debug
       DeployExtension: False
