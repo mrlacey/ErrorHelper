@@ -64,7 +64,7 @@
       <Version>3.7.2</Version>
     </PackageReference>
     <PackageReference Include="MSTest.Analyzers">
-      <Version>3.7.2</Version>
+      <Version>3.7.3</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
