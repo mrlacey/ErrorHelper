@@ -39,15 +39,28 @@ namespace ErrorHelper
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            OutputPane.Instance.WriteLine("Sorry to interrupt. I know your time is busy, presumably that's why you installed this extension (Error Helper).");
-            OutputPane.Instance.WriteLine("I'm happy that the extensions I've created have been able to help you and many others");
-            OutputPane.Instance.WriteLine("but I also need to make a living, and limited paid work over the last few years has been a challenge. :(");
-            OutputPane.Instance.WriteLine(string.Empty);
-            OutputPane.Instance.WriteLine("Show your support by making a one-off or recurring donation at https://github.com/sponsors/mrlacey");
-            OutputPane.Instance.WriteLine(string.Empty);
-            OutputPane.Instance.WriteLine("If you become a sponsor, I'll tell you how to hide this message too. ;)");
-            OutputPane.Instance.WriteLine(string.Empty);
-            OutputPane.Instance.Activate();
-        }
+			OutputPane.Instance.WriteLine("********************************************************************************************************");
+			OutputPane.Instance.WriteLine("This is a free extension that is made possible thanks to the kind and generous donations of:");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("Daniel, James, Mike, Bill, unicorns39283, Martin, Richard, Alan, Howard, Mike, Dave, Joe, ");
+			OutputPane.Instance.WriteLine("Alvin, Anders, Melvyn, Nik, Kevin, Richard, Orien, Shmueli, Gabriel, Martin, Neil, Daniel, ");
+			OutputPane.Instance.WriteLine("Victor, Uno, Paula, Tom, Nick, Niki, chasingcode, luatnt, holeow, logarrhythmic, kokolorix, ");
+			OutputPane.Instance.WriteLine("Guiorgy, Jessé, pharmacyhalo, MXM-7, atexinspect, João, hals1010, WTD-leachA, andermikael, ");
+			OutputPane.Instance.WriteLine("spudwa, Cleroth, relentless-dev-purchases & 20+ more");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("Join them to show you appreciation and ensure future maintenance and development by becoming a sponsor.");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("Go to https://github.com/sponsors/mrlacey");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("Any amount, as either a one-off or on a monthly basis, is appreciated more than you can imagine.");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("I'll also tell you how to hide this message too.  ;)");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("If you can't afford to support financially, you can always");
+			OutputPane.Instance.WriteLine("leave a positive review at https://marketplace.visualstudio.com/items?itemName=MattLaceyLtd.ErrorHelper&ssr=false#review-details");
+			OutputPane.Instance.WriteLine("");
+			OutputPane.Instance.WriteLine("********************************************************************************************************");
+		}
     }
 }
